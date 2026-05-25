@@ -1,1 +1,32 @@
+Current complexity:O(NlogN)
+Suggested complexity:O(N)
+Suggestions:
+Replace sorting with a Hash Set to achieve linear time complexity.
 
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        int n = nums.size();
+        if(n==0){
+            return 0;
+        }
+        int res = 1;  // minimum length
+        int curr = 1; // minimum consecutive
+
+        sort(nums.begin(), nums.end());
+
+        for(int i=1; i<n; i++) {
+            if (nums[i] == nums[i-1])   {  // duplicate skips
+                continue ;
+            }
+
+            if(nums[i] - nums[i-1] == 1) {
+                curr++;   // streak of series
+            }else {
+                curr =1 ; // break if series not found
+            }
+            res = max(res, curr);
+        }
+        return res;
+    }
+};
