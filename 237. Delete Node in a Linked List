@@ -11,3 +11,14 @@ public:
         delete(node);
     }
 };
+
+
+Alternative Approach
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        node->val = node->next->val;
+        ListNode* Prev = node->next;
+        node->next = node->next->next;
+    }
+};
