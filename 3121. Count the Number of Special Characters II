@@ -1,1 +1,28 @@
+class Solution {
+public:
+    int numberOfSpecialChars(string word) {
+        int result = 0;
+
+        for(char c = 'a'; c <= 'z'; ++c) {
+            int lastLower = -1;
+            int firstUpper = -1;
+
+            for(int i = 0; i < word.size(); i++) {
+                if(word[i] == c) {
+                    lastLower = i; // track last lowercase
+                }
+                if(word[i] == toupper(c)) {
+                    if(firstUpper == -1) {
+                        firstUpper = i; // track first uppercase
+                    }
+                }
+            }
+
+            if(lastLower != -1 && firstUpper != -1 && lastLower < firstUpper) {
+                result++;
+            }
+        }
+        return result;
+    }
+};
 
