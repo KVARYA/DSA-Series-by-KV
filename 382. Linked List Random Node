@@ -1,1 +1,21 @@
+class Solution {
+private:
+    vector<int> arr;   // store linked list values
+    int n;             // size of the list
+
+public:
+    Solution(ListNode* head) {
+        while (head) {
+            arr.push_back(head->val);
+            head = head->next;
+        }
+        n = arr.size();
+    }
+    
+    int getRandom() {
+        int x = rand() % n;   // generate random index
+        return arr[x];
+    }
+};
+
 
