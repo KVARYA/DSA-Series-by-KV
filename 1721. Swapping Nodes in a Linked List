@@ -1,5 +1,31 @@
 class Solution {
 public:
+    ListNode* swapNodes(ListNode* head, int k) {
+        ListNode* p1 = NULL;
+        ListNode* p2 = NULL;
+        ListNode* temp = head;
+
+        while(temp) {
+        k--;
+         if(k==0) {
+            p1 = temp;
+            p2 = head;
+         }else if(p2 != NULL) {
+            p2= p2->next;
+           
+         }
+          temp = temp->next;
+        }
+        swap(p1->val, p2->val);
+        return head; 
+    }       
+};
+
+
+///////////////////////////////////////////
+
+class Solution {
+public:
     int findlength(ListNode* head) {
         int l=0;
         while(head != NULL) {
