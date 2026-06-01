@@ -14,3 +14,25 @@ public:
     }
 };
 
+
+
+///////////////////////////////////////////////////////////////////
+
+class Solution {
+public:
+    int minimumCost(vector<int>& a) {
+        // total sum
+        int total = accumulate(a.begin(), a.end(), 0);
+
+        // sort array
+        sort(a.begin(), a.end());
+
+        // sum of every 3rd element from the end
+        int discount = 0;
+        for (int i = a.size() - 3; i >= 0; i -= 3) {
+            discount += a[i];
+        }
+
+        return total - discount;
+    }
+};
