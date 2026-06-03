@@ -1,1 +1,21 @@
+class Solution {
+public:
+    ListNode* sortList(ListNode* head) {
+        if(head == NULL || head->next == NULL) return head;
+        ListNode* temp = head;
+        vector<int> arr;
+        while(head) {
+            arr.push_back(head->val);
+            head= head->next;
+        }
+        sort(arr.begin(), arr.end());
 
+        head= temp;
+        int i=0;
+        while(head) {
+            head->val = arr[i++];
+            head= head->next;
+        }
+        return temp;
+    }
+};
