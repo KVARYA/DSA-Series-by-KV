@@ -1,3 +1,30 @@
+Optimal solution 
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* temp = head;
+        for(int i=1; i<=n; i++) {
+            temp=temp->next;
+        }
+        if(temp == NULL) {
+            ListNode* res = head->next;
+            delete(head);
+            return res;
+        }
+        ListNode* prev = head;
+        while(temp != NULL && temp->next != NULL) {
+            prev= prev->next;
+            temp = temp->next;
+        }
+        ListNode* res2 = prev->next;
+        prev->next= prev->next->next;
+        delete(res2);
+        return head;
+    }
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Solution {
 public:
      int travel_front(ListNode* head) {
